@@ -1,14 +1,15 @@
 //
-//  RedSignal.swift
+//  TrafficLight.swift
 //  TrafficLightSwiftUI
 //
-//  Created by Armen on 18.07.2023.
+//  Created by Armen on 20.07.2023.
 //
 
 import SwiftUI
 
-struct RedSignal: View {
+struct TrafficLight: View {
     let color: Color
+    var opacity: Double
     
     var body: some View {
         Circle()
@@ -16,12 +17,12 @@ struct RedSignal: View {
             .frame(width: 100, height: 100)
             .overlay(Circle().stroke(Color.white, lineWidth: 3))
             .shadow(radius: 10)
-            .opacity(1)
+            .opacity(opacity)
     }
-}
-
-struct RedSignal_Previews: PreviewProvider {
-    static var previews: some View {
-        RedSignal(color: .red)
+    
+    struct TrafficLight_Previews: PreviewProvider {
+        static var previews: some View {
+            TrafficLight(color: .black, opacity: 1)
+        }
     }
 }

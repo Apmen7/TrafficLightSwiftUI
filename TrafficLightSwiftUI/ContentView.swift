@@ -11,31 +11,22 @@ struct ContentView: View {
     @State private var opacityRed = 0.3
     @State private var opacityYellow = 0.3
     @State private var opacityGreen = 0.3
+    @State private var buttonTitle = "Start"
     
     var body: some View {
         ZStack {
             Color.black
                 .ignoresSafeArea()
-            VStack {
-                RedSignal(color: .red)
-                    .offset(y: -150)
-                    .opacity(opacityRed)
-                YellowSignal(color: .yellow)
-                    .offset(y: -100)
-                    .opacity(opacityYellow)
-                GreenSignal(color: .green)
-                    .offset(y: -50)
-                    .opacity(opacityGreen)
-                
-                Button(action: {
-                    buttonPressed()
-                }, label: {
-                    if opacityRed == 1 || opacityYellow == 1 || opacityGreen == 1 {
-                        Text("NEXT")
-                    } else {
-                        Text("Start")
+            VStack(spacing: 70) {
+                TrafficLight(color: .red, opacity: opacityRed)
+                TrafficLight(color: .yellow, opacity: opacityYellow)
+                TrafficLight(color: .green, opacity: opacityGreen)
+                Button(buttonTitle) {
+                    if buttonTitle == "Start" {
+                        buttonTitle = "Next"
                     }
-                })
+                    buttonPressed()
+                }
                 .font(.title)
                 .foregroundColor(.white)
                 .frame(width: 150, height: 50)
